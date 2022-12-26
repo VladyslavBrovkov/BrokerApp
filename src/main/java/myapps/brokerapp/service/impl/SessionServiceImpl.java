@@ -72,6 +72,8 @@ public class SessionServiceImpl implements SessionService {
     public Agreement create() {
         List<Order> buyOrderList = tradeSession.getBuyOrderList();
         List<Order> sellOrderList = tradeSession.getSellOrderList();
+        checkOrderExpired(buyOrderList);
+        checkOrderExpired(sellOrderList);
         for (Order buyOrder : buyOrderList) {
             if (!buyOrder.getOrderStatus().equals(OrderStatus.IN_PROGRESS)) {
                 continue;
@@ -120,4 +122,11 @@ public class SessionServiceImpl implements SessionService {
                     }
                 });
     }
+
+    public void checkOrderExpired(List<Order> orderList) {
+        orderList.stream().filter(o -> o.getExpirationTime() != null &&
+                        !o.getExpirationTime().after(new Date()))
+                .forEach(o -> o.setOrderStatus(OrderStatus.CANCELED));
+    }
+
 }

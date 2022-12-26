@@ -18,9 +18,8 @@ public class Order {
     private OrderStatus orderStatus;
     private OrderType orderType;
     private BigDecimal price;
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private Date orderTime;
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date expirationTime;
     private Instrument instrument;
     private Double quantity;

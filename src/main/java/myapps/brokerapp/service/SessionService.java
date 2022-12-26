@@ -25,4 +25,5 @@ public interface SessionService {
     List<Agreement> getUserAgreements(Integer traderId);
 
     void cancelProgressOrders();
+
 }
