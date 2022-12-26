@@ -1,4 +1,4 @@
 # BrokerApp
 Admin credentials:
-# login - admin
-# password - admin
+-login: admin
+-password: admin
