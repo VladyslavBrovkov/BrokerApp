@@ -10,9 +10,9 @@ public interface SessionService {
 
     void processOrders() throws ExecutionException, InterruptedException;
 
-    boolean startSession() throws ExecutionException, InterruptedException;
+    void startSession() throws ExecutionException, InterruptedException;
 
-    boolean endSession();
+    void endSession();
 
     boolean isActive();
 

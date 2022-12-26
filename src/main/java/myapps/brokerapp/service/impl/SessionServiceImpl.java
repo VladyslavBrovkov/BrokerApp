@@ -43,19 +43,17 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public boolean startSession() throws ExecutionException, InterruptedException {
+    public void startSession() throws ExecutionException, InterruptedException {
         tradeSession.setActiveStatus(true);
         tradeSession.setStartTime(new Date());
         processOrders();
-        return true;
     }
 
     @Override
-    public boolean endSession() {
+    public void endSession() {
         tradeSession.setFinishTime(new Date());
         tradeSession.setActiveStatus(false);
         cancelProgressOrders();
-        return true;
     }
 
     @Override
