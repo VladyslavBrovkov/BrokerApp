@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Agreement Page</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="col-md-offset-2 col-sm-8">
+    <div class="page-header">
+        <h1>My Agreements</h1>
+    </div>
+    <table class="table table-sub-heading-color">
+        <thead>
+        <tr>
+            <th scope="col"> Instrument </th>
+            <th scope="col"> BuyOrderTraderId </th>
+            <th scope="col"> SellOrderTraderId </th>
+            <th scope="col"> AgreementTime </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${trader_agreements.isEmpty()}">
+            <td colspan="2"> No Agreements Available </td>
+        </tr>
+        <tr th:each="agreement : ${trader_agreements}">
+            <td><span th:text="${agreement.getInstrument()}"></span> </td>
+            <td><span th:text="${agreement.getBuyOrderTraderId()}"></span> </td>
+            <td><span th:text="${agreement.getSellOrderTraderId()}"></span> </td>
+            <td><span th:text="${agreement.getAgreementTime()}"></span> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

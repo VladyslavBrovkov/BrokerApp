@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Session Page</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<form method="POST" th:action="@{/session/start}">
+    <div class="col-sm-offset-2 col-sm-6">
+        <input class="btn btn-info" type="submit" value="Start Session"/>
+    </div>
+</form>
+<form method="POST" th:action="@{/session/end}">
+    <div class="col-sm-offset-2 col-sm-6">
+        <input class="btn btn-info" type="submit" value="End Session"/>
+    </div>
+</form>
+</body>
+</html>

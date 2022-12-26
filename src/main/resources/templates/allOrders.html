@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>All Orders Page</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="col-md-offset-2 col-sm-8">
+    <div class="page-header">
+        <h1>All Orders</h1>
+    </div>
+    <table class="table table-sub-heading-color">
+        <thead>
+        <tr>
+            <th scope="col"> Type </th>
+            <th scope="col"> Instrument </th>
+            <th scope="col"> OrderStatus </th>
+            <th scope="col"> OrderPrice </th>
+            <th scope="col"> OrderTime </th>
+            <th scope="col"> ExpirationTime </th>
+            <th scope="col"> TraderId </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${userOrders.isEmpty()}">
+            <td colspan="2"> No Orders Available </td>
+        </tr>
+        <tr th:each="orders : ${userOrders}">
+            <td><span th:text="${orders.getOrderType()}"></span> </td>
+            <td><span th:text="${orders.getInstrument()}"></span> </td>
+            <td><span th:text="${orders.getOrderStatus()}"></span> </td>
+            <td><span th:text="${orders.getPrice()}"></span> </td>
+            <td><span th:text="${orders.getOrderTime()}"></span> </td>
+            <td><span th:text="${orders.getExpirationTime()}"></span> </td>
+            <td><span th:text="${orders.getTraderId()}"></span> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Order Page</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<form class="form-horizontal" th:action="@{/orders/create}" th:object="${order}" method="post">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="orderType">Order Type:</label>
+        <div class="col-sm-8">
+        <select class="form-control" name="orderType" id="orderType">
+            <option th:each="orderType : ${orderTypes}" th:value="${orderType}" th:text="${orderType.name()}"/>
+        </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="instrument">Instrument Type:</label>
+        <div class="col-sm-8">
+            <select class="form-control" name="instrument" id="instrument">
+                <option th:each="instrument : ${instruments}" th:value="${instrument}" th:text="${instrument.name()}"/>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="price">Your bid price:</label>
+        <div class="col-sm-8">
+            <input type="number" placeholder="0.0" step="0.01" class="form-control" th:field="*{price}" id="price" required
+                   autofocus/>
+            <small class="form-text text-muted" th:if="${#fields.hasErrors('price')}"
+                   th:errors="*{price}"></small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="price">Instrument quantity:</label>
+        <div class="col-sm-8">
+            <input type="number" placeholder="0.0" step="0.01" class="form-control" th:field="*{quantity}" id="quantity" required
+                   autofocus/>
+            <small class="form-text text-muted" th:if="${#fields.hasErrors('quantity')}"
+                   th:errors="*{quantity}"></small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="expirationTime">Order expiration time:</label>
+        <div class="col-sm-8">
+            <input type="datetime-local" class="form-control" th:field="*{expirationTime}" id="expirationTime"/>
+            <small class="form-text text-muted" th:if="${#fields.hasErrors('expirationTime')}"
+                   th:errors="*{expirationTime}"></small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="expirationTime">Your Account Balance:</label>
+        <div class="col-sm-8">
+            <h4 th:text="${account_balance}"></h4>
+        </div>
+    </div>
+    <div class="col-sm-offset-2 col-sm-6">
+        <input class="btn btn-info" type="submit"  value="Create"/>
+        <input class="btn btn" type="reset" value="Clear"/>
+    </div>
+</form>
+<a th:href="@{/orders/myOrders}">Go to My Orders</a>
+</body>
+</html>

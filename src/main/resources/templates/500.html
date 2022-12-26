@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error 500 Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="header"></div>
+<h2 style="margin: 0 auto; width: max-content" th:text="${code}" />
+<h3 style="margin: 0 auto; width: 100%; text-align:center" th:text="${message}" />
+<br>
+<form class="col-md-12 text-center">
+    <input type="button" value="Return to previous page" onclick="history.back()">
+</form>
+</body>
+</html>
