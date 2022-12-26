@@ -9,6 +9,7 @@ public interface OrderService {
     Order create(Order order, Account account);
 
     List<Order> getAllOrders();
+
     List<Order> getUserOrdersById(Integer id);
 
 }
